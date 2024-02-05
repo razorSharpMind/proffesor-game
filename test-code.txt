@@ -1,0 +1,36 @@
+function random(x) {
+  const a = Math.floor(Math.random() * x * (10 - 0 + 1)) + 0;
+  const b = Math.floor(Math.random() * x * (10 - 0 + 1)) + 0;
+  const arr = [];
+  arr.push(a);
+  arr.push(b);
+  return arr;
+}
+
+//
+let score = 0;
+let x = Number(prompt("What do you want the difficulty to be?"));
+//
+
+console.log(`Level  1`);
+
+for (let k = 0; k < 10; k++) {
+  let rndmNums = random(x);
+  let answer = rndmNums[0] + rndmNums[1];
+  let yourAnswer;
+  for (let i = 0; i < 3; i++) {
+    yourAnswer = Number(prompt(`${rndmNums[0]} + ${rndmNums[1]}`));
+    if (answer == yourAnswer) {
+      console.log(`${rndmNums[0]} + ${rndmNums[1]} = ${yourAnswer}`);
+      score++;
+      break;
+    } else {
+      console.log("EEE");
+    }
+  }
+  if (answer != yourAnswer) {
+    console.log(`answer is ${rndmNums[0]} + ${rndmNums[1]} = ${answer}`);
+  }
+}
+
+console.log(`your score is ${score}`);
