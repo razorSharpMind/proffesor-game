@@ -691,3 +691,163 @@ function labeling(i) {
 repeat(5, labeling);
 
 console.log(labels);
+
+//  დაწერეთ ფუნქცია სახელწოდებით capitalizeWords, რომელიც იღებს წინადადებას (სტრიქონს) არგუმენტად და აბრუნებს ახალ წინადადებას, სადაც თითოეული სიტყვის პირველი ასო დიდია.
+
+function capitalizeWords(string) {
+  let updatedSentence = "";
+  updatedSentence += string[0].toUpperCase();
+
+  for (let i = 1; i < string.length; i++) {
+    if (string[i] == " ") {
+      updatedSentence += string[i];
+      updatedSentence += string[i + 1].toUpperCase();
+      i++;
+    } else {
+      updatedSentence += string[i];
+    }
+  }
+
+  return updatedSentence;
+}
+
+let sentence = "tetri tritina tetr trtvilze trtoda";
+
+console.log(capitalizeWords(sentence));
+
+//  დაწერეთ ფუნქცია სახელწოდებით capitalizeWords, რომელიც იღებს წინადადებას (სტრიქონს) არგუმენტად და აბრუნებს ახალ წინადადებას, სადაც თითოეული სიტყვის პირველი ასო დიდია.
+
+function capitalizeWords(string, capitalize) {
+  let strArray = string.split(" ");
+  let newArr = [];
+  for (let i = 0; i < strArray.length; i++) {
+    newArr.push(capitalize(strArray[i]));
+  }
+  let string = newArr.join(" ");
+
+  return string;
+}
+
+function capitalize(word) {
+  word = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+
+  return word;
+}
+
+let string = "some stupid fucking sentence mate";
+
+console.log(capitalizeWords(string, capitalize));
+
+// map handwritten
+
+let person1 = {
+  name: "george",
+  lastName: "foreman",
+  personality: "charming",
+};
+
+let person2 = {
+  name: "Alice",
+  lastName: "Johnson",
+  personality: "friendly",
+};
+
+let person3 = {
+  name: "Bob",
+  lastName: "Smith",
+  personality: "outgoing",
+};
+
+let person4 = {
+  name: "Emily",
+  lastName: "Davis",
+  personality: "calm",
+};
+
+let person5 = {
+  name: "Chris",
+  lastName: "Roberts",
+  personality: "energetic",
+};
+
+let person6 = {
+  name: "Olivia",
+  lastName: "Clark",
+  personality: "thoughtful",
+};
+
+let arrPersons = [person1, person2, person3, person4, person5, person6];
+
+function map(arr, change) {
+  let newArr = [];
+  for (let element of arr) {
+    newArr.push(change(element));
+  }
+  return newArr;
+}
+
+console.log(map(arrPersons, (change) => change.name));
+
+// დაწერეთ ფუნქცია, რომელიც იღებს სტრიქონს შეყვანად და აბრუნებს ჭეშმარიტს, თუ ის არის პანგრამა (შეიცავს ანბანის ყველა ასოს ერთხელ მაინც), ცრუ სხვა შემთხვევაში.
+
+let sentence = "The quick brown fox jumps over the lazy dog";
+let pngrm = "qwertyuiopasdfghjklzxcvbnm";
+let result;
+
+function check(sentence) {
+  for (let i = 0; i < pngrm.length; i++) {
+    if (sentence.includes(pngrm[i])) {
+    } else {
+      result = false;
+      return result;
+    }
+  }
+  result = true;
+  return result;
+}
+
+console.log(check(sentence));
+
+// blackbox ai example -
+
+unction containsAllChars(charSet, str) {
+  const set = new Set(str);
+  for (const char of charSet) {
+    if (!set.has(char)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkIfPangram(sentence) {
+  sentence = sentence.toLowerCase();
+  sentence = sentence.replace(/[" "]/g, "");
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  return containsAllChars(alphabet, sentence);
+}
+
+let sentence = "the quick brown fox jumps over the lazy dog";
+
+console.log(checkIfPangram(sentence));
+
+
+// დაწერეთ ფუნქცია, რომელიც მიიღებს წინადადებას შეყვანად და აბრუნებს უნიკალური სიტყვების მასივს ანბანური თანმიმდევრობით, გამოკლებით გავრცელებული ინგლისური სიტყვების, როგორიცაა "the", "a" და "is".
+
+function sorter(sentence) {
+  let commonWords = ["the","a","an","to","at","under","in","on","for","from"];
+
+  let split = sentence.split(" ");
+  let uniqueWords = new Set(split);
+
+  let sortedWords = Array.from(uniqueWords).sort((a, b) => a.localeCompare(b));
+
+  let newArr = sortedWords.filter((element) => !commonWords.includes(element));
+
+  return newArr;
+}
+
+let sentence =
+  "the quick a brown fox jumps an to at in on for from guy under over the lazy dog";
+
+console.log(sorter(sentence));

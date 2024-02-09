@@ -1,36 +1,23 @@
-function random(x) {
-  const a = Math.floor(Math.random() * x * (10 - 0 + 1)) + 0;
-  const b = Math.floor(Math.random() * x * (10 - 0 + 1)) + 0;
-  const arr = [];
-  arr.push(a);
-  arr.push(b);
-  return arr;
+//filter method//
+
+let arr = [5, 10, 17, 20, 144, 102, 15, -10, 102, 1240];
+
+newArray = arr.filter((s) => s >= 20);
+
+console.log(newArray);
+
+//reduce//
+
+let arr = [3, 5, 7, 10, 12];
+
+let newArr = arr.reduce((a, b) => a + b);
+
+console.log(newArr);
+
+// Random Number //
+
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//
-let score = 0;
-let x = Number(prompt("What do you want the difficulty to be?"));
-//
-
-console.log(`Level  1`);
-
-for (let k = 0; k < 10; k++) {
-  let rndmNums = random(x);
-  let answer = rndmNums[0] + rndmNums[1];
-  let yourAnswer;
-  for (let i = 0; i < 3; i++) {
-    yourAnswer = Number(prompt(`${rndmNums[0]} + ${rndmNums[1]}`));
-    if (answer == yourAnswer) {
-      console.log(`${rndmNums[0]} + ${rndmNums[1]} = ${yourAnswer}`);
-      score++;
-      break;
-    } else {
-      console.log("EEE");
-    }
-  }
-  if (answer != yourAnswer) {
-    console.log(`answer is ${rndmNums[0]} + ${rndmNums[1]} = ${answer}`);
-  }
-}
-
-console.log(`your score is ${score}`);
+console.log(generateRandomNumber(0, 20));
